@@ -16,8 +16,9 @@ class ViewController: UITableViewController {
         title = "Shopping list"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writeShops))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(writeList))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        
         
         writeList()
     }
@@ -26,7 +27,7 @@ class ViewController: UITableViewController {
         shoppingList.removeAll(keepingCapacity: true)
         tableView.reloadData()
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingList.count
     }
@@ -36,6 +37,7 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = shoppingList[indexPath.row]
         return cell
     }
+
     
     @objc func writeShops() {
         let ac = UIAlertController(title: "Enter", message: nil, preferredStyle: .alert)
@@ -63,6 +65,7 @@ class ViewController: UITableViewController {
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
     }
+    
     
 
 }
